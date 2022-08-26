@@ -41,6 +41,11 @@ MVVM 패턴 학습과 Room 라이브러리 활용
 ![deleteTodo](https://user-images.githubusercontent.com/97011241/184500158-94b7be7b-5a67-46ea-8982-8d712440fff9.gif)
 - 목록의 쓰레기통 버튼을눌러서 할 일 목록을 삭제할 수 있음
 
+### 6. 완료한 할 일 목록만 표시<br>
+![check](https://user-images.githubusercontent.com/97011241/186813059-bd808e65-7ee4-45cf-8d3e-a1e54d9f8bb3.gif)
+- 사용자가 완료했다고 표시한(체크박스) 목록들만을 출력함
+
+
 <br>
 
 ## 패턴
