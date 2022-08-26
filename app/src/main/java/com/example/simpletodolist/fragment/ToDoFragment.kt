@@ -2,7 +2,6 @@ package com.example.simpletodolist.fragment
 
 import android.icu.util.Calendar
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,9 +48,8 @@ class ToDoFragment : Fragment(), AddCustomInterface {
 
     override fun onOkClicked(text: String) {
         val calendar = Calendar.getInstance()
-        val dateString = "${calendar.get(Calendar.YEAR)}/${calendar.get(Calendar.MONTH) + 1}/${calendar.get(Calendar.DATE)}"
+        val toDo = ToDo(0, text, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE), false)
 
-        val toDo = ToDo(0, text, dateString, false)
         viewModel.addToDo(toDo)
         Toast.makeText(activity, "추가되었습니다", Toast.LENGTH_SHORT).show()
     }

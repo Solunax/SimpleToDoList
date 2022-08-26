@@ -8,6 +8,7 @@ import kotlinx.coroutines.*
 
 class ViewModel(application: Application) : AndroidViewModel(application){
     val readData : LiveData<List<ToDo>>
+     val checkedData : LiveData<List<ToDo>>
     private val repository : RoomRepository
 
     private var _dateToDoData = MutableLiveData<List<ToDo>>()
@@ -16,6 +17,7 @@ class ViewModel(application: Application) : AndroidViewModel(application){
     init {
         repository = RoomRepository(AppDataBase.getInstance(application))
         readData = repository.readData.asLiveData()
+        checkedData = repository.checkedData.asLiveData()
     }
 
     fun addToDo(toDo : ToDo){
@@ -36,9 +38,9 @@ class ViewModel(application: Application) : AndroidViewModel(application){
         }
     }
 
-    fun getDateToDo(date : String){
+    fun getDateToDo(year : Int, month : Int, date : Int){
         viewModelScope.launch(Dispatchers.IO) {
-            _dateToDoData.postValue(repository.getDateToDo(date))
+            _dateToDoData.postValue(repository.getDateToDo(year, month, date))
         }
     }
 }

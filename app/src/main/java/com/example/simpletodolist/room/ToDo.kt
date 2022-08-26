@@ -8,6 +8,8 @@ data class ToDo(
     @PrimaryKey(autoGenerate = true)
     var index :Int = 0,
     val name : String,
-    val date : String,
+    val year : Int,
+    val month : Int,
+    val date : Int,
     val check : Boolean
     )

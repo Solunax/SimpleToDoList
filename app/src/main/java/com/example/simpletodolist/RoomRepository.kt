@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 class RoomRepository(private val db : AppDataBase?) {
     val readData : Flow<List<ToDo>> = db!!.ToDoDAO().getToDoList()
-
+    val checkedData : Flow<List<ToDo>> = db!!.ToDoDAO().getCheckedToDoList()
     fun addToDo(toDo: ToDo){
         db!!.ToDoDAO().addToDo(toDo)
     }
@@ -19,7 +19,7 @@ class RoomRepository(private val db : AppDataBase?) {
         db!!.ToDoDAO().deleteToDo(toDo)
     }
 
-    fun getDateToDo(date:String) : List<ToDo>{
-        return db!!.ToDoDAO().getDateToDoList(date)
+    fun getDateToDo(year :Int, month : Int, date : Int) : List<ToDo>{
+        return db!!.ToDoDAO().getDateToDoList(year, month, date)
     }
 }

@@ -15,8 +15,6 @@ import com.example.simpletodolist.dialog.AddCustomDialog
 import com.example.simpletodolist.dialog.AddCustomInterface
 import com.example.simpletodolist.recycler.ToDoRecyclerAdapter
 import com.example.simpletodolist.room.ToDo
-import java.text.SimpleDateFormat
-import java.util.*
 
 class CalendarFragment : Fragment(), AddCustomInterface {
     private var binding : CalendarFragmentBinding? = null
@@ -46,14 +44,13 @@ class CalendarFragment : Fragment(), AddCustomInterface {
             this.month = month + 1
             this.date = date
 
-            val dateString = "$year/${month + 1}/$date"
-            Log.d("CA", dateString)
-            viewModel.getDateToDo(dateString)
+            Log.d("CA", "$year $month $date")
+            viewModel.getDateToDo(year, month, date)
         }
 
         viewModel.readData.observe(viewLifecycleOwner) {
             Log.d("DEB", "READ OBSERVE")
-            viewModel.getDateToDo("$year/$month/$date")
+            viewModel.getDateToDo(year, month, date)
         }
 
         viewModel.dateToDoData.observe(viewLifecycleOwner) {
@@ -74,8 +71,7 @@ class CalendarFragment : Fragment(), AddCustomInterface {
     }
 
     override fun onOkClicked(text: String) {
-        val date = "$year/$month/$date"
-        val toDo = ToDo(0, text, date, false)
+        val toDo = ToDo(0, text, year, month, date, false)
 
         viewModel.addToDo(toDo)
         Toast.makeText(activity, "추가되었습니다", Toast.LENGTH_SHORT).show()

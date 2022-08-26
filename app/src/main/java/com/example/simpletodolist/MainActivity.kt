@@ -7,7 +7,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
-    private val tabName = arrayOf("To Do", "Calendar")
+    private val tabName = arrayOf("To Do", "Calendar", "Done To Do")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
             when(position){
                 0 -> tab.text = tabName[0]
                 1 -> tab.text = tabName[1]
+                2 -> tab.text = tabName[2]
             }
         }.attach()
     }
