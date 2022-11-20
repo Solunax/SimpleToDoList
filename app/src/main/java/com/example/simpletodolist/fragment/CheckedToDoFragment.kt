@@ -10,7 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.simpletodolist.ViewModel
 import com.example.simpletodolist.databinding.CheckedTodoFragementBinding
 import com.example.simpletodolist.recycler.ToDoRecyclerAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CheckedToDoFragment : Fragment() {
     private var binding : CheckedTodoFragementBinding? = null
     private val viewModel : ViewModel by viewModels()
@@ -20,7 +22,7 @@ class CheckedToDoFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = CheckedTodoFragementBinding.inflate(inflater, container, false)
 
         val recyclerView = binding!!.recyclerView

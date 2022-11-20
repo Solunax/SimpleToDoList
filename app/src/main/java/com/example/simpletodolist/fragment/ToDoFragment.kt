@@ -1,6 +1,5 @@
 package com.example.simpletodolist.fragment
 
-import android.icu.util.Calendar
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +14,10 @@ import com.example.simpletodolist.dialog.AddCustomDialog
 import com.example.simpletodolist.dialog.AddCustomInterface
 import com.example.simpletodolist.recycler.ToDoRecyclerAdapter
 import com.example.simpletodolist.room.ToDo
+import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 
+@AndroidEntryPoint
 class ToDoFragment : Fragment(), AddCustomInterface {
     private var binding : TodoFragmentBinding? = null
     private val viewModel : ViewModel by viewModels()
@@ -39,7 +41,7 @@ class ToDoFragment : Fragment(), AddCustomInterface {
         }
 
         floatingButton.setOnClickListener {
-            val addDialog = AddCustomDialog(activity!!, this)
+            val addDialog = AddCustomDialog(requireActivity(), this)
             addDialog.show()
         }
 

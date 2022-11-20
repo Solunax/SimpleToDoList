@@ -1,21 +1,20 @@
 package com.example.simpletodolist
 
-import android.app.Application
 import androidx.lifecycle.*
-import com.example.simpletodolist.room.AppDataBase
 import com.example.simpletodolist.room.ToDo
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
+import javax.inject.Inject
 
-class ViewModel(application: Application) : AndroidViewModel(application){
+@HiltViewModel
+class ViewModel @Inject constructor(private val repository: RoomRepository) : androidx.lifecycle.ViewModel(){
     val readData : LiveData<List<ToDo>>
-     val checkedData : LiveData<List<ToDo>>
-    private val repository : RoomRepository
+    val checkedData : LiveData<List<ToDo>>
 
     private var _dateToDoData = MutableLiveData<List<ToDo>>()
     val dateToDoData get() = _dateToDoData
 
     init {
-        repository = RoomRepository(AppDataBase.getInstance(application))
         readData = repository.readData.asLiveData()
         checkedData = repository.checkedData.asLiveData()
     }
