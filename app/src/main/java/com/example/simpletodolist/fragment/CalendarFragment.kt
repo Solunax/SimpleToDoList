@@ -72,8 +72,8 @@ class CalendarFragment : Fragment(), AddCustomInterface {
         return binding!!.root
     }
 
-    override fun onOkClicked(text: String) {
-        val toDo = ToDo(0, text, yearValue, monthValue, dateValue, false)
+    override fun onOkClicked(text: String, hour : Int, minute : Int) {
+        val toDo = ToDo(0, text, yearValue, monthValue, dateValue, hour, minute , false)
 
         viewModel.addToDo(toDo)
         Toast.makeText(activity, "추가되었습니다", Toast.LENGTH_SHORT).show()

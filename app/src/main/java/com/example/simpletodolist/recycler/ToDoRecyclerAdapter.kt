@@ -26,13 +26,13 @@ class ToDoRecyclerAdapter(private val toDoViewModel : ViewModel) : RecyclerView.
 
             binding.checkbox.setOnCheckedChangeListener { _, checked ->
                 if(binding.checkbox.isPressed){
-                    val updateToDo = ToDo(toDoOrigin.index, toDoOrigin.name, toDoOrigin.year, toDoOrigin.month, toDoOrigin.date, checked)
+                    val updateToDo = ToDo(toDoOrigin.index, toDoOrigin.name, toDoOrigin.year, toDoOrigin.month, toDoOrigin.date, toDoOrigin.hour, toDoOrigin.minute,checked)
                     viewModel.editToDo(updateToDo)
                 }
             }
 
             binding.doEdit.setOnClickListener{
-                val editDialog = EditCustomDialog(binding.doEdit.context, this)
+                val editDialog = EditCustomDialog(binding.doEdit.context, this, toDoOrigin.hour, toDoOrigin.minute)
                 editDialog.show()
             }
 
@@ -42,8 +42,8 @@ class ToDoRecyclerAdapter(private val toDoViewModel : ViewModel) : RecyclerView.
             }
         }
 
-        override fun onClicked(text: String) {
-            val updateToDo = ToDo(toDoOrigin.index, text, toDoOrigin.year, toDoOrigin.month, toDoOrigin.date, toDoOrigin.check)
+        override fun onClicked(text: String, hour : Int, minute : Int) {
+            val updateToDo = ToDo(toDoOrigin.index, text, toDoOrigin.year, toDoOrigin.month, toDoOrigin.date, toDoOrigin.hour, toDoOrigin.minute, toDoOrigin.check)
             viewModel.editToDo(updateToDo)
             Toast.makeText(binding.root.context, "수정했습니다.", Toast.LENGTH_SHORT).show()
         }

@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">SimpleToDoList</string>
-    <string formatted="false" name = "date_format">%d. %d. %d</string>
+    <string formatted="false" name = "date_format">%d. %d. %d %02d:%02d</string>
 </resources>

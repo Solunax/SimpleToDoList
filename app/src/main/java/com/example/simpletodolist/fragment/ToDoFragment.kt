@@ -48,9 +48,9 @@ class ToDoFragment : Fragment(), AddCustomInterface {
         return binding!!.root
     }
 
-    override fun onOkClicked(text: String) {
+    override fun onOkClicked(text: String, hour : Int, minute : Int) {
         val calendar = Calendar.getInstance()
-        val toDo = ToDo(0, text, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE), false)
+        val toDo = ToDo(0, text, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE), hour, minute, false)
 
         viewModel.addToDo(toDo)
         Toast.makeText(activity, "추가되었습니다", Toast.LENGTH_SHORT).show()

@@ -11,5 +11,7 @@ data class ToDo(
     val year : Int,
     val month : Int,
     val date : Int,
+    val hour : Int,
+    val minute : Int,
     val check : Boolean
     )
